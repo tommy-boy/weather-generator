@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Free Comics - Comic Strips - Online Comics - Entertainment</title>
+    <meta name="keywords" content="Free Comics, Comic Strips, Online Comics, Entertainment" />
+    <meta name="description" content="View dozens of free online comic strips on azcentral.com." />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link data-identifier="main" rel="stylesheet" href="http://www.gannett-cdn.com/azcentral/static/css/bundles/main_modern.min.css">
+    <!--<![endif]-->
+
+    <!--[if IE 9]>
+    <link data-identifier="main" rel="stylesheet" href="http://www.gannett-cdn.com/azcentral/static/css/bundles/main.min.css">
+    <link data-identifier="main" rel="stylesheet" href="http://www.gannett-cdn.com/azcentral/static/css/bundles/dynamic.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link data-identifier="main" rel="stylesheet" href="http://www.gannett-cdn.com/azcentral/static/css/bundles/dynamic.min.css/static/css/bundles/main.min.css">
+    <link data-identifier="main" rel="stylesheet" href="http://www.gannett-cdn.com/azcentral/static/css/bundles/dynamic.min.css/static/css/bundles/dynamic.min.css">
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <script defer src="//tealium.hs.llnwd.net/o43/utag/gci/azcentral/prod/utag.js?asof=20140303"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/phx-omniture-1.js') }}"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') + 
+        '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+
+    <script type='text/javascript'>
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/7103/az-phoenix-C1531/leaderboard_atf/entertainment/comics', [728, 90], 'div-gpt-ad-728x90_1').addService(googletag.pubads());
+        googletag.defineSlot('/7103/az-phoenix-C1531/leaderboard_btf/entertainment/comics', [728, 90], 'div-gpt-ad-728x90_2').addService(googletag.pubads());
+        googletag.defineSlot('/7103/az-phoenix-C1531/poster_front/entertainment/comics', [300, 250], 'div-gpt-ad-300x250_1').addService(googletag.pubads());
+        googletag.defineSlot('/7103/az-phoenix-C1531/poster_front_btf/entertainment/comics', [300, 250], 'div-gpt-ad-300x250_2').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <iframe src="http://www.azcentral.com/services/cobrand/header/" frameborder="0" scrolling="no" ></iframe>
+</header>
+
+<div id="div-gpt-ad-728x90_1">
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-728x90_1'); });
+    </script>
+</div>
+
+<section>
+<div class="container">
+    <div id="mainContainer">
+
+        {% block content %}{% endblock %}
+    
+    </div>
+</div>
+</section>
+
+<div id="div-gpt-ad-728x90_2">
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-728x90_2'); });
+    </script>
+</div>
+
+<footer>
+    <iframe src="http://pages.azcentral.com/cobrand-footer" width="1000" height="1040" frameborder="0" scrolling="no"></iframe>
+</footer>
+
+     <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="http://fuelcdn.com/fuelux/2.3/loader.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/comics_section.js') }}"></script>
+
+</body>
+</html>
