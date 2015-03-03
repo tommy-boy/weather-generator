@@ -1,6 +1,0 @@
-from flask import Flask
-
-app = Flask(__name__)
-app.config.from_object('configs.default.CommonConfig')
-app.config.from_envvar('WEATHER-GENERATOR', silent=True)
-from app import views
