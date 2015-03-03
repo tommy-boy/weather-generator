@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class='comics-section-front-container'>
+    <div class='header'>
+        <div class='bubble'><a href="{{url_for('/')}}">Daily Comics</a></div>
+        <div class='site-name'><a href="{{url_for('/')}}">presented by <img src='http://www.gannett-cdn.com/sites/azcentral/images/footer-logo@2x.png'/></a></div>
+    </div>
+    <div class='comics-wrapper'>
+        {% if kings_comic %}
+            <script type="text/javascript" src="{{ kings }}"></script>
+            <noscript>This page uses Javascript. Your browser either doesn't support Javascript or you have it turned off. To see this page as it is meant to appear please use a Javascript-enabled browser.</noscript>
+        {% else %}
+            {% for key, val in comics_list.iteritems() %}
+                {% if val == comic_name %}
+                    <div class="comic-display-name">
+                        <span class="comic-name"><a href="/slideshow?comic={{ key }}">{{ comic_name }}</a></span>
+                        <span class="comic-date-r">{{ comic_display_date }}</span>
+                    </div>
+                    <a href="/slideshow?comic={{ key }}"><img class="comic-display" src="{{ comic_url }}"/></a>
+                {% endif %}
+            {% endfor %}
+        <div class="spacer"></div>
+        <div class='comics-wrapper'>
+            {% for key, val in uclick_list.iteritems() %}
+                <div class="comic-display-name">
+                    <span class="comic-name"><a href="/slideshow?comic={{ val['id'] }}">{{ val['name'] }}</a></span>
+                    <span class="comic-date-r">{{ val['img_date'] }}</span>
+                </div>
+                    <a href="/slideshow?comic={{ val['id'] }}"><img class="uclick-display" src="{{ val['img_url'] }}"/></a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- rcol -->
+<div id="comics-list">
+    <div id="div-gpt-ad-300x250_1">
+        <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-300x250_1'); });
+        </script>
+    </div>
+    <div class="story-ribbon">
+        <h6 class="story-ribbon-title">All Comics</h6>
+        <div class="story-ribbon-content">
+            <div class="comics-form-wrapper">
+                <form class="comics-form" id="comics-form" action="slideshow">
+                    <div class="comics-selection-dropdown comics-dropdown ui-dropdown ui-light" data-scrollbar="true">
+                        <select class="ui-dropdown" name="comic" id="comic-select">
+                            <option value="0" selected="selected">Select</option>   
+                            {% for key, val in comics_list.iteritems() %}
+                                {% if val == comic_name %}
+                                    <option value="{{ key }}" selected="selected">{{ val }}</option>
+                                {% else %}
+                                    <option value="{{ key }}">{{ val }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input type='hidden' id="comics-search-value" name="comic-search"/>
+                    <input type='hidden' id="kings-feature-id"/>
+                    <input type='hidden' id='kings-feature-date'/>
+                    <input placeholder="search" class='comics-search-item ui-text-input' id='comics-search'/>
+                    <button class="ui-btn ui-light" type="submit" value="submit">Go</button>
+                </form>
+            </div>
+            <ul>
+                <div class="box-header">A - D</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "0123456789ABCD"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <div class="box-header">E - H</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "EFGH"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <div class="box-header">I - L</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "IJKL"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+                <div id="div-gpt-ad-300x250_2">
+                    <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-300x250_2'); });
+                    </script>
+                </div>
+            <ul>
+                <div class="box-header">M - P</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "MNOP"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <div class="box-header">Q - T</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "QRST"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <div class="box-header">U - X</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "UVWX"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <div class="box-header">Y - Z</div>
+                {% for key, val in comics_list.iteritems() %}
+                    {% for char in "YZ"|list %}
+                        {% if char == val|upper|truncate(1, True, end='') %}
+                            <li><a href="slideshow?comic={{ key }}&feature_id={{ key }}">{{ val }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
