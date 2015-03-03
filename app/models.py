@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 
-class Comics(object):
+class Weather(object):
 
     def comicsList(self, comics_list):
         creators_list_url = app.config['CREATORS_COMICS_URL']
