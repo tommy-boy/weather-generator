@@ -1,3 +1,63 @@
+#local-header-iframe-div {
+    position: absolute;
+    z-index:100;
+    top:-123px;
+    height:120px;
+}
+
+#local-header-iframe-div iframe {
+    height: 120px;
+}
+
+#local-header-iframe-div.overlay-everything iframe {
+    height:375px;
+}
+
+.everything-but-header {
+    margin-top: 123px;
+}
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+	display:block!important;
+	max-width:600px!important;
+	margin:0 auto!important; 
+	clear:both!important;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+	padding:5px;
+	max-width:600px;
+	margin:0 auto;
+	display:block; 
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table { width: 100%; }
+
+
+/* Odds and ends */
+.column {
+	width: 300px;
+	float:left;
+}
+.column tr td { padding: 10px 7px; } /*this is normally 15 */
+.column-wrap { 
+	padding:0!important; 
+	margin:0 auto; 
+	max-width:600px!important;
+}
+.column table { width:100%;}
+.social .column {
+	width: 280px;
+	min-width: 279px;
+	float:left;
+}
+
+/* Be sure to place a .clear element after each set of columns, just to be safe */
+.clear { display: block; clear: both; }
+
 /* ------------------------------------- 
 		Global Widget classes
 ------------------------------------- */
