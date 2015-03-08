@@ -8,15 +8,6 @@ from datetime import datetime
 
 
 class Weather(object):
-	# def getConfig():
-	#     config_url = "http://configfactory.azcentral.com/weathergenerator/default/config.json"
-	#     headers = {'Content-Type': 'application/json'}
-	#     data = requests.get(config_url, params = request.args, headers=headers)
-	#     if data.status_code == 200:
-	#         return data.json()
-	#     else:
-	#         return False
-
 
     @classmethod
     def getForecast(self):
@@ -41,40 +32,30 @@ class Weather(object):
 		config_url = app.config['WEATHER_JSON']
 		data = requests.get(str(config_url))
 		if data.status_code == 200:
-			json_obj = data.json['primary_modules']
-			for cnt in range(0, len(json_obj)):
-				if 'weather_seven_day' in json_obj[cnt]:
-					hi_to_replace = json_obj[cnt]['weather_seven_day'][0]['tempFHi']
-					lo_to_replace =  json_obj[cnt]['weather_seven_day'][0]['tempFLo']
-					weather_icon = app.config['WEATHER_ICONS'] + str(json_obj[cnt]['weather_seven_day'][0]['dayTime']['weatherIcon']) + '.png'
-			return (hi_to_replace, lo_to_replace, weather_icon)
-		else:
-			return False
-
-    @classmethod
-    def getThreeDay(self):
-		config_url = app.config['WEATHER_JSON']
-		data = requests.get(str(config_url))
-		if data.status_code == 200:
 			threeday = OrderedDict()
 			weathericons = OrderedDict()
 			hilo = OrderedDict()
 			json_obj = data.json['primary_modules']
 			for cnt in range(0, len(json_obj)):
 				if 'weather_seven_day' in json_obj[cnt]:
+					hi_to_replace = json_obj[cnt]['weather_seven_day'][0]['tempFHi']
+					lo_to_replace =  json_obj[cnt]['weather_seven_day'][0]['tempFLo']
+					weather_icon = app.config['WEATHER_ICONS'] + str(json_obj[cnt]['weather_seven_day'][0]['dayTime']['weatherIcon']) + '.png'
+			for cnt in range(0, len(json_obj)):
+				if 'weather_seven_day' in json_obj[cnt]:
 					for offset in range(1, 4):
-						# dayname_to_replace = "day" + str(offset)
 						dayname = json_obj[cnt]['weather_seven_day'][offset]['dayCode']
-						hi_to_replace = json_obj[cnt]['weather_seven_day'][offset]['tempFHi']
-						lo_to_replace =  json_obj[cnt]['weather_seven_day'][offset]['tempFLo']
+						hi = json_obj[cnt]['weather_seven_day'][offset]['tempFHi']
+						lo =  json_obj[cnt]['weather_seven_day'][offset]['tempFLo']
 						weather_icon = app.config['WEATHER_ICONS'] + str(json_obj[cnt]['weather_seven_day'][offset]['dayTime']['weatherIcon']) + '.png'
 						threeday['day' + str(offset)] = dayname[:3]
-						hilo['day' + str(offset) + '_hi'] = hi_to_replace
-						hilo['day' + str(offset) + '_lo'] = lo_to_replace
+						hilo['day' + str(offset) + '_hi'] = hi
+						hilo['day' + str(offset) + '_lo'] = lo
 						weathericons['icon' + str(offset)] = weather_icon
-			return (threeday, weathericons, hilo)
+			return (hi_to_replace, lo_to_replace, weather_icon, threeday, weathericons, hilo)
 		else:
 			return False
+
 
 @app.context_processor
 def utility_processor():
@@ -100,8 +81,3 @@ def weather_url():
 
 def text_truncate(content, length=120, suffix='...'):
 		return content[:length].rsplit(' ', 1)[0]+suffix
-
-
-
-
-  

@@ -7,8 +7,7 @@ from models import Weather
 def index():
 	gen = Weather  # get an instance of the class
 	narrative = gen.getForecast()
-	today_hi, today_lo, weather_icon = gen.getCurrent()
-	threeday, weathericons, hilo = gen.getThreeDay()
+	today_hi, today_lo, weather_icon, threeday, weathericons, hilo = gen.getCurrent()
 	weatherimg = app.config['IMGDIR'] + app.config['WEATHERIMG']
 	return render_template('index.html', title='Index', narrative=narrative, weatherimg=weatherimg, today_hi=today_hi, today_lo=today_lo, weather_icon=weather_icon, threeday=threeday, weathericons=weathericons, hilo=hilo)
 
