@@ -16,7 +16,7 @@ class Weather(object):
 	    if data.status_code == 200:
 	    	content = ''
 	    	offset = 1
-	    	json_obj = data.json['article']['body']
+	    	json_obj = data.json()['article']['body']
 	    	for cnt in range(0, len(json_obj)):
 	    		if 'type' in json_obj[cnt] and offset <=2:
 	    			content += json_obj[cnt]['value'] + '  '
@@ -35,7 +35,7 @@ class Weather(object):
 			self.threeday = OrderedDict()
 			self.hilo = OrderedDict()
 			self.weathericons = OrderedDict()
-			self.json_obj = data.json['primary_modules']
+			self.json_obj = data.json()['primary_modules']
 			self.getOneDay(self)
 			self.getThreeDay(self)
 			return
