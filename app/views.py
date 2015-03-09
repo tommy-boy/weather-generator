@@ -3,7 +3,7 @@ from flask import render_template, request
 from models import Weather
 
 
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
 	forecast = Weather  # get an instance of the class
 	forecast.getForecast()
