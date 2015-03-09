@@ -1,1 +1,1 @@
-web: python weather-generator/run.py
+web: python run.py
