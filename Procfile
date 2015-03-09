@@ -1,1 +1,1 @@
-web: python weather-generator:run.py --log-file -
+web: python weather-generator/run.py
