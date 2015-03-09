@@ -7,60 +7,165 @@
             <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 10px; padding:0; width:290px;">
                 <tr>
                     <td style="padding:0; margin:0;"><br/>
-                        <div class="date" style="font-size:11px; text-transform: uppercase; letter-spacing: 2px; margin:0 0 10px 0; margin-left:5px; font-family:Arial, Helvetica, sans-serif;"><?= App::loadDate();?></div>
+                        <div class="date" style="font-size:11px; text-transform: uppercase; letter-spacing: 2px; margin:0 0 10px 0; margin-left:5px; font-family:Arial, Helvetica, sans-serif;">{{ date_now('%B %Y') }}</div>
                         <div class="widgetContainer">
-                            <?=Format::formatTopper('azcentral forecast')?>
+                            <table style="margin:0; padding:0; width:280px; display:block; border-bottom:1px solid #CF8522;" cellpadding="0" cellspacing="0">
+                                <tr valign="middle">
+                                    <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-left.jpg" style="float:left; margin:0; padding:0;" /></td>
+                                    <td style="font-family: Arial, Helvetica, sans-serif; background:#CF8522;"><span style="float:left; background:#CF8522; height:23px; line-height:23px; text-transform:uppercase; font-size:13px; font-weight:bold; letter-spacing:2px; color:#fff; margin:0; padding:0;">{{ get_title }}</span></td>
+                                    <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-right.jpg" style="float:left; margin:0; padding:0;" />
+                                    </td>
+                                </tr>
+                            </table>
 
                             <table width="280" style="font-family:Arial, Helvetica, sans-serif;">
-                            <tr>
-                            <td>
-                            <img src="http://nocache.azcentral.com/imgs/staff-bios/staff-bio-<?=$w->image;?>.jpg" align="left" style="margin:0 7px 7px 0; width:85px; height:85px;" width="85" height="85"/>
-                            <p style="margin:0 0 0 8px; font-size:15px;"><?=$w->forecast?></p>
-                            </td>
-                            </tr>
+                                <tr>
+                                <td>
+                                    <img src="{{ weatherimg }}.jpg" align="left" style="margin:0 7px 7px 0; width:85px; height:85px;" width="85" height="85"/>
+                                    <p style="margin:0 0 0 8px; font-size:15px;">{{ forecast.narrative }}</p>
+                                    <table style="margin:0 0 20px 0; padding:0; width:280px;" width="280">
+                                        <tbody>
+                                            <tr>
+                                                <td align="right" style="margin:0; padding:0;"><a href="{{ article_url }}" style="vertical-align:middle; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; text-decoration:none; color:#124f7d;"> Full forecast...  </a></td>
+                                                <td><img src="http://nocache.azcentral.com/email/newsletters/images/read-more.jpg" border="0" style="margin:0 0 0 3px; padding:0; vertical-align:middle;"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                </tr>
 
-                            <?$w->getCurrent();
-                            $i = 0;
-                            ?>
-                            <tr>
-                            <?
-                            echo '<td style="text-align:center; margin:0; padding:0;"><strong>'.$w->header[$i].'</strong></td>';
-                            ?>
-                            </tr>
-                            <tr>
-                            <?
-                            echo '<td style="text-align:center; margin:0; padding:0;">'.$w->img[$i].'</td>';
-                            ?>
-                            </tr>
-                            <tr>
-                            <? 
-                            echo '<td style="text-align:center; margin:0; padding:0 0 20px;">'.$w->high[$i].'/ <span style="color:#7088b4;">'.$w->low[$i].'</span></td>';
-                            ?>
-                            </tr>
+                                <tr>
+                                    <td style="text-align:center; margin:0; padding:0;"><strong>Today </strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center; margin:0; padding:0;"><img src="{{ forecast.weather_icon }}" alt="" width="46" height="38" border="0"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center; margin:0; padding:0 0 20px;">{{ forecast.hi_to_replace }} / <span style="color:#7088b4;"> {{ forecast.lo_to_replace }}</span></td>
+                                </tr>
                             </table>
+                        
+                            <table style="margin:0; padding:0; width:280px; display:block; border-bottom:1px solid #CF8522;" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr valign="middle">
+                                        <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-left.jpg" style="float:left; margin:0; padding:0;"></td>
+                                        <td style="font-family: Arial, Helvetica, sans-serif; background:#CF8522;"><span style="float:left; background:#CF8522; height:23px; line-height:23px; text-transform:uppercase; font-size:13px; font-weight:bold; letter-spacing:2px; color:#fff; margin:0; padding:0;">{{ get_threeday }}</span></td>
+                                        <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-right.jpg" style="float:left; margin:0; padding:0;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="clear:both;  width:280px; margin:0; padding:0;">
+
+                                <table width="280" cellpadding="0" cellspacing="0" style="background:#F7FBFE; border-bottom:1px solid #ccc; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                    <tbody>
+                                        <tr>    
+                                            {% for key, val in forecast.threeday.iteritems() %}
+                                                <td style="margin:0; padding:5px 0; text-align:center;"><strong>{{ val }}</strong></td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            {% for key, val in forecast.weathericons.iteritems() %}
+                                                <td style="margin:0; padding:0; text-align:center;"><img src="{{ val }}"></td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                                <td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day1_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day1_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day2_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day2_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day3_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day3_lo }}</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table style="margin:0 0 20px 0; padding:0; width:280px;" width="280">
+                                    <tbody>
+                                        <tr>
+                                            <td align="right" style="margin:0; padding:0;"><a href="{{ weather_url }}" style="vertical-align:middle; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; text-decoration:none; color:#124f7d;">Complete weather coverage </a></td>
+                                            <td><img src="http://nocache.azcentral.com/email/newsletters/images/read-more.jpg" border="0" style="margin:0 0 0 3px; padding:0; vertical-align:middle;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="widgetContainer">
+                            
+                                <table style="margin:0; padding:0; width:280px; display:block; border-bottom:1px solid #CF8522;" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr valign="middle">
+                                            <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-left.jpg" style="float:left; margin:0; padding:0;"></td>
+                                            <td style="font-family: Arial, Helvetica, sans-serif; background:#CF8522;"><span style="float:left; background:#CF8522; height:23px; line-height:23px; text-transform:uppercase; font-size:13px; font-weight:bold; letter-spacing:2px; color:#fff; margin:0; padding:0;">Your Photos and Videos</span></td>
+                                            <td width="11" style="margin:0; padding:0; background:#CF8522;"><img src="http://nocache.azcentral.com/email/newsletters/images/column-right.jpg" style="float:left; margin:0; padding:0;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table width="280" style="font-family:Arial, Helvetica, sans-serif;">
+                                    <tr valign="top">
+                                        <td colspan="2" style="margin:0; padding:0;">You can upload your weather photos and videos to azcentral.com in just a few easy steps! Get started here:</td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td style="margin:0; padding:0; text-align:center;"><a href="https://www.formstack.com/forms/azcentral-photoupload"><img src="http://nocache.azcentral.com/ic/email/channels/weather/images/upload-photos.jpg" border="0" alt="upload a weather photo" /></a></td>
+                                        <td style="margin:0; padding:0; text-align:center;"><a href="http://nocache.azcentral.com/ugc"><img src="http://nocache.azcentral.com/ic/email/channels/weather/images/upload-videos.jpg" border="0" alt="upload a weather video" /></a></td>
+                                    </tr>
+                                </table>
+
+                            </div>
                         </div>
                     </td>
                 </tr>
             </table>
         </td>
+
         <td>
-            <table cellpadding="0" cellspacing="0" style="margin:0 0 0 10px; padding:0; width:300px; font-family:Arial, Helvetica, sans-serif;">
+
+
+            <table cellpadding="0" cellspacing="0" style="margin:0; padding:0 10px 0 0; width:300px; font-family:Arial, Helvetica, sans-serif;">
                 <tr>
                     <td style="padding:10px 0">
-                        <div id="div-gpt-ad-300x250_1">
-                            <script type='text/javascript'>
-                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-300x250_1'); });
-                            </script>
-                        </div>
-                        <? if(self::$config->mode != 'development'){                 
-                                echo App::loadSocial(); 
-                                echo App::loadAd();
-                                echo App::loadPromo();
-                        } ?>
+
+                        <table width="280" id="social" style="margin:5px 0 0 0; padding:0;" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td><a href="https://www.facebook.com/12news"><img width="90" height="27" src="http://nocache.azcentral.com/email/newsletters//images/facebook.jpg" style="margin:0; padding:0; width:90px; height:27px; vertical-align:middle;"></a><a href="https://twitter.com/12news"><img width="90" height="27" src="http://nocache.azcentral.com/email/newsletters//images/twitter.jpg" align="right" style="margin:0; padding:0; width:90px; height:27px; vertical-align:middle;"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table width="300" id="ad" style="margin:0; padding:0; text-align:center;" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%" style="text-align:center;padding-top:10px;padding-bottom:10px;">
+
+                                        <div id="div-gpt-ad-300x250_1">
+                                            <script type='text/javascript'>
+                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-300x250_1'); });
+                                            </script>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table id="promo" width="280" cellpadding="0" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif; margin:0; padding:0;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="ic-az-wrapper">
+                                            <h1 style="margin:3px 0; padding:0; text-decoration:none;">
+                                            <a href="http://static.azcentral.com/mobile-apps/" style="color:#124f7d; margin:0; padding:0; font-size:26px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-decoration:none;">Get our mobile app</a></h1>
+                                            <p class="ic-deck">Download the azcentral news app and get breaking news happening in your community sent straight to your phone!</p>
+                                            <a href="http://static.azcentral.com/mobile-apps/">
+                                            <img class="az-promo-image" src="http://nocache.azcentral.com/i/3/1/f/M32_CIFR69b911f382f0d067f2368e27ef29af13.jpg" alt="azcentral mobile apps" style="font-family:Arial, Helvetica, sans-serif; margin:5px 0; width:280px;" width="280px;"></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                        
                     </td>
                 </tr>
-            </table>                    
+            </table> 
         </td>
+
     </tr>   
 </table>
 
