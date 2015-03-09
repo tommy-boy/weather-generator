@@ -22,7 +22,7 @@
                                 <tr>
                                 <td>
                                     <img src="{{ weatherimg }}.jpg" align="left" style="margin:0 7px 7px 0; width:85px; height:85px;" width="85" height="85"/>
-                                    <p style="margin:0 0 0 8px; font-size:15px;">{{ narrative }}</p>
+                                    <p style="margin:0 0 0 8px; font-size:15px;">{{ forecast.narrative }}</p>
                                     <table style="margin:0 0 20px 0; padding:0; width:280px;" width="280">
                                         <tbody>
                                             <tr>
@@ -38,10 +38,10 @@
                                     <td style="text-align:center; margin:0; padding:0;"><strong>Today </strong></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:center; margin:0; padding:0;"><img src="{{ weather_icon }}" alt="" width="46" height="38" border="0"></td>
+                                    <td style="text-align:center; margin:0; padding:0;"><img src="{{ forecast.weather_icon }}" alt="" width="46" height="38" border="0"></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:center; margin:0; padding:0 0 20px;">{{ today_hi }} / <span style="color:#7088b4;"> {{ today_lo }}</span></td>
+                                    <td style="text-align:center; margin:0; padding:0 0 20px;">{{ forecast.hi_to_replace }} / <span style="color:#7088b4;"> {{ forecast.lo_to_replace }}</span></td>
                                 </tr>
                             </table>
                         
@@ -60,17 +60,17 @@
                                 <table width="280" cellpadding="0" cellspacing="0" style="background:#F7FBFE; border-bottom:1px solid #ccc; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif;">
                                     <tbody>
                                         <tr>    
-                                            {% for key, val in threeday.iteritems() %}
+                                            {% for key, val in forecast.threeday.iteritems() %}
                                                 <td style="margin:0; padding:5px 0; text-align:center;"><strong>{{ val }}</strong></td>
                                             {% endfor %}
                                         </tr>
                                         <tr>
-                                            {% for key, val in weathericons.iteritems() %}
+                                            {% for key, val in forecast.weathericons.iteritems() %}
                                                 <td style="margin:0; padding:0; text-align:center;"><img src="{{ val }}"></td>
                                             {% endfor %}
                                         </tr>
                                         <tr>
-                                                <td style="margin:0; padding:5px 0; text-align:center;">{{ hilo.day1_hi }}/ <span style="color:#7088b4;">{{ hilo.day1_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ hilo.day2_hi }}/ <span style="color:#7088b4;">{{ hilo.day2_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ hilo.day3_hi }}/ <span style="color:#7088b4;">{{ hilo.day3_lo }}</span></td>
+                                                <td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day1_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day1_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day2_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day2_lo }}</span></td><td style="margin:0; padding:5px 0; text-align:center;">{{ forecast.hilo.day3_hi }}/ <span style="color:#7088b4;">{{ forecast.hilo.day3_lo }}</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
