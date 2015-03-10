@@ -12,5 +12,5 @@ class CommonConfig(object):
 	WEATHER_URL = "http://weather.azcentral.com"
 	ARTICLE_JSON = "http://www.azcentral.com/story/news/local/arizona/2015/01/16/phoenix-weather-weekend-forecast-sunny-warm-brk/21848897.json"
 	ARTICLE_URL = "http://www.azcentral.com/story/news/local/arizona/2015/01/16/phoenix-weather-weekend-forecast-sunny-warm-brk/21848897/"
-	DEBUG = False
+	DEBUG = True
 	app.secret_key = '\xd1\xfc\x92f,\x9e\xfd\xfc\x06}\xe1\x97'
