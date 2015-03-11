@@ -6,9 +6,9 @@ from app.models import Weather
 
 @app.route('/front')
 def front():
-	forecast = Weather  # get an instance of the class
-	forecast.getFront()
-	return render_template('front.html', title='Weather Front', forecast=forecast)
+	front = Weather  # get an instance of the class
+	front.getFront()
+	return render_template('front.html', front=front)
 
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])

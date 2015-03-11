@@ -14,11 +14,11 @@ class Weather(object):
 	    data = requests.get(str(article_json))
 	    if data.status_code == 200:
 	    	content = ''
-	    	offset = 1
+	    	offset = 0
 	    	self.json = json.loads(data.content)
 	    	json_obj = self.json['article']['body']
 	    	for cnt in range(0, len(json_obj)):
-	    		if 'type' in json_obj[cnt] and offset <= 2:
+	    		if 'value' in json_obj[cnt] and offset <= 2:
 	    			content += json_obj[cnt]['value'] + '  '
 	    			offset += 1
 	        cleanr =re.compile('<.*?>')
