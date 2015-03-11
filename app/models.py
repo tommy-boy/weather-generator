@@ -18,11 +18,28 @@ class Weather(object):
 	    	self.json = json.loads(data.content)
 	    	json_obj = self.json['article']['body']
 	    	for cnt in range(0, len(json_obj)):
-	    		if 'type' in json_obj[cnt] and offset <=2:
+	    		if 'type' in json_obj[cnt] and offset <= 2:
 	    			content += json_obj[cnt]['value'] + '  '
 	    			offset += 1
 	        cleanr =re.compile('<.*?>')
 	        self.narrative = text_truncate(re.sub(cleanr,'', content))
+	        return
+	    else:
+	        return False
+
+	@classmethod
+	def getFront(self):
+	    article_json = app.config['FRONT_JSON']
+	    data = requests.get(str(article_json))
+	    if data.status_code == 200:
+	    	content = ''
+	    	self.json = json.loads(data.content)
+	    	json_obj = self.json['article']['body']
+	    	for cnt in range(0, len(json_obj)):
+	    		if 'value' in json_obj[cnt] and cnt == 3:
+	    			content = json_obj[cnt]['value']
+	        cleanr =re.compile('<.*?>')
+	        self.narrative = re.sub(cleanr,'', content)
 	        return
 	    else:
 	        return False
@@ -87,6 +104,10 @@ def article_url():
 @app.context_processor
 def weather_url():
 	return dict(weather_url=app.config['WEATHER_URL'])
+
+@app.context_processor
+def front_url():
+	return dict(front_url=app.config['FRONT_URL'])
 
 def text_truncate(content, length=120, suffix='...'):
 	return content[:length].rsplit(' ', 1)[0]+suffix
