@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, make_response
+from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 app.config.from_object('configs.default.CommonConfig')
 app.config.from_envvar('WEATHER-GENERATOR', silent=True)
 from app import views
 
+toolbar = DebugToolbarExtension(app)
 
 @app.errorhandler(400)
 def bad_request(error):

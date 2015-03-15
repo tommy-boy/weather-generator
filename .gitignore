@@ -1,1 +1,4 @@
+*.pyc
+instance/
+
 *.DS_Store
