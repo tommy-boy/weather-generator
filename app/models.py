@@ -21,6 +21,7 @@ class Weather(object):
 	    		if 'value' in json_obj[cnt] and offset <= 2:
 	    			content += json_obj[cnt]['value'] + '  '
 	    			offset += 1
+	    	print content
 	        cleanr =re.compile('<.*?>')
 	        self.narrative = text_truncate(re.sub(cleanr,'', content))
 	        return
