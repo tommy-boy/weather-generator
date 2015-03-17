@@ -7,7 +7,7 @@
             <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 10px; padding:0; width:290px;">
                 <tr>
                     <td style="padding:0; margin:0;"><br/>
-                        <div class="date" style="font-size:11px; text-transform: uppercase; letter-spacing: 2px; margin:0 0 10px 0; margin-left:5px; font-family:Arial, Helvetica, sans-serif;">{{ date_now('%B %Y') }}</div>
+                        <div class="date" style="font-size:11px; text-transform: uppercase; letter-spacing: 2px; margin:0 0 10px 0; margin-left:5px; font-family:Arial, Helvetica, sans-serif;">{{ date_now('%B %d') }}</div>
                         <div class="widgetContainer">
                             <table style="margin:0; padding:0; width:280px; display:block; border-bottom:1px solid #CF8522;" cellpadding="0" cellspacing="0">
                                 <tr valign="middle">
@@ -121,7 +121,7 @@
                 <tr>
                     <td style="padding:10px 0">
 
-                        <table width="280" id="social" style="margin:5px 0 0 0; padding:0;" cellpadding="0" cellspacing="0">
+                        <table width="280" id="social" style="margin:5px 0 0; padding:0;" cellpadding="0" cellspacing="0">
                             <tbody>
                                 <tr>
                                     <td><a href="https://www.facebook.com/12news"><img width="90" height="27" src="http://nocache.azcentral.com/email/newsletters//images/facebook.jpg" style="margin:0; padding:0; width:90px; height:27px; vertical-align:middle;"></a><a href="https://twitter.com/12news"><img width="90" height="27" src="http://nocache.azcentral.com/email/newsletters//images/twitter.jpg" align="right" style="margin:0; padding:0; width:90px; height:27px; vertical-align:middle;"></a></td>
@@ -132,13 +132,19 @@
                         <table width="300" id="ad" style="margin:0; padding:0; text-align:center;" cellpadding="0" cellspacing="0">
                             <tbody>
                                 <tr>
-                                    <td width="100%" style="text-align:center;padding:20px 2px 5px 0;">
+                                    <td width="100%" style="text-align:center;padding:18px 2px 0 0;">
 
-                                        <div id="div-gpt-ad-300x250_1">
-                                            <script type='text/javascript'>
-                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-300x250_1'); });
-                                            </script>
-                                        </div>
+                                        <!--
+                                        %%[
+                                            VAR @alias, @random, @adurl, @imgurl
+                                            set @alias = "{{ forecast.alias }}"
+                                            set @random = {{ forecast.rand }}
+                                            set @adurl = Concat("http://pubads.g.doubleclick.net/gampad/jump?co=1&iu=/7103/az-phoenix-C1531/Flex_static/",@alias,"&sz=160x600|300x250|300x600&c=",@random)
+                                            set @imgurl = Concat("http://pubads.g.doubleclick.net/gampad/ad?co=1&iu=/7103/az-phoenix-C1531/Flex_static/",@alias,"&sz=160x600|300x250|300x600&c=",@random)
+                                        ]%%
+                                        -->      
+                                        <a href="%%=RedirectTo(v(@adurl))=%%"><img src="%%=v(@imgurl)=%%"></a>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -149,9 +155,9 @@
                                 <tr>
                                     <td>
                                         <div class="ic-az-wrapper">
-                                            <h1 style="margin:3px 0; padding:0; text-decoration:none;">
+                                            <h1 style="margin:10px 0 0; padding:0; text-decoration:none;">
                                             <a href="http://static.azcentral.com/mobile-apps/" style="color:#124f7d; margin:0; padding:0; font-size:26px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-decoration:none;">Get our mobile app</a></h1>
-                                            <p class="ic-deck">Download the azcentral news app and get breaking news happening in your community sent straight to your phone!</p>
+                                            <p class="ic-deck" style="margin:5px 0;">Download the azcentral news app and get breaking news happening in your community sent straight to your phone!</p>
                                             <a href="http://static.azcentral.com/mobile-apps/">
                                             <img class="az-promo-image" src="http://nocache.azcentral.com/i/3/1/f/M32_CIFR69b911f382f0d067f2368e27ef29af13.jpg" alt="azcentral mobile apps" style="font-family:Arial, Helvetica, sans-serif; margin:5px 0; width:280px;" width="280px;"></a>
                                         </div>

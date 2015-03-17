@@ -2,6 +2,7 @@ from app import app
 import requests
 import json
 import re
+import random
 from collections import OrderedDict
 from datetime import datetime
 
@@ -13,6 +14,8 @@ class Weather(object):
 	    article_json = app.config['ARTICLE_JSON']
 	    data = requests.get(str(article_json))
 	    if data.status_code == 200:
+	    	self.rand = random.randint(100000,999999)
+	        self.alias = 'weather/forecasts_newsletter'
 	    	content = ''
 	    	offset = 0
 	    	self.json = json.loads(data.content)
