@@ -15,5 +15,5 @@ class CommonConfig(object):
 	FRONT_JSON = "http://www.azcentral.com/story/news/12-news/2015/01/18/12news-weather-forecast/21953337.json"
 	FRONT_URL = "http://www.azcentral.com/story/news/12-news/2015/01/18/12news-weather-forecast/21953337/"
 	UPLOAD_FOLDER = "/mnt/writehere.azcentral.com/drupalfiles/persistent/weather-front/"
-	DEBUG = True
+	DEBUG = False
 	app.secret_key = '\xd1\xfc\x92f,\x9e\xfd\xfc\x06}\xe1\x97'
