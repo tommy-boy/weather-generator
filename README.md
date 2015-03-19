@@ -7,6 +7,8 @@ Weather Newsletter Generator
 
 ###Description
 * Weather Generator is developed to have ExactTarget access the app which will render the Weather Newsletter html file.
+* Currently the application does an additional feed ingestion for /front, ran by cronuser, that creates a static inc file to be used by https://github.com/phx-it-web/pages/tree/release/weather-forecast-video for the purpose of displaying azcentral FRONT - WEATHER Generic iFrame weather-forecast-video.
+
 * Setup a local development environment (see Setup) and do a git pull Master.
 * This should give you:
     
