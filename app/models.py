@@ -15,7 +15,7 @@ class Weather(object):
 	    data = requests.get(str(article_json))
 	    if data.status_code == 200:
 	    	self.rand = random.randint(100000,999999)
-	        self.alias = 'weather/forecasts_newsletter'
+	        self.alias = app.config['AD_ALIAS']
 	    	content = ''
 	    	offset = 0
 	    	self.json = json.loads(data.content)
