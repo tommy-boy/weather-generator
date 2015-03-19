@@ -1,0 +1,5 @@
+##Setup a local development environment
+* mkvirtualenv flask
+* workon flask
+* Run all the pip install commands in requirements.txt
+* Run the app: python run.py
