@@ -21,3 +21,7 @@ def front():
         f.write(output_from_parsed_template)
         return output_from_parsed_template
 
+@app.route('/version', methods=['GET'])
+def version():
+    version = app.config['VERSION']
+    return version

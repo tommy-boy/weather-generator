@@ -3,6 +3,7 @@ import os
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
 class CommonConfig(object):
+	VERSION = 'Version: WCG v2.0'
 	FORECAST_TITLE = "AZCENTRAL FORECAST"
 	THREEDAY_TITLE = "THREE-DAY FORECAST"
 	WEATHERIMG = "azcentral"
